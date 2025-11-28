@@ -147,6 +147,12 @@ function KselComponent() {
                         <div className="ksel-item">
                             <p>Шансы на успех: {chance}</p>
                         </div>
+                        <div className="ksel-item">
+                            <p>*Пустые значения засчитаются за 0</p>
+                        </div>
+                        <div className="ksel-item">
+                            <p>В будущем будет кнопка "Сделаю +1 опасками"</p>
+                        </div>
                     </div>
                 }
                 {activeTab === 1 && 
