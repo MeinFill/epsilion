@@ -1,0 +1,20 @@
+input {
+    max-height: 25px;
+    max-width: 50px;
+}
+button {
+    all: unset;
+    
+}
+
+.main-class-ksel {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.ksel-item {
+    display: flex;  
+    flex-direction: row;
+    font-size: 25px;
+}
