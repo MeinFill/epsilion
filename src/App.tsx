@@ -10,6 +10,7 @@ function App() {
           <img src={epsLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      <h1>ПРОВЕРКА</h1>
     </>
   )
 }
