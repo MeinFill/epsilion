@@ -1,10 +1,7 @@
-import { useState } from 'react'
 import epsLogo from './assets/eps.png'
-import KselComponent from './components/kselComponent/kselComponent'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
