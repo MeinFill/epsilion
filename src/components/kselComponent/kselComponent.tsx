@@ -60,7 +60,7 @@ function KselComponent() {
                     }
                 };
             }
-            const totalChance = ((chance + chanceForFirst) * 100).toFixed(3);
+            const totalChance = (((1 - (1 - chance) * (1 - chanceForFirst))) * 100).toFixed(3);
             setChance(totalChance + "%");
         }
     }
