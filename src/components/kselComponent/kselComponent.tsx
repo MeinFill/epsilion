@@ -38,6 +38,11 @@ function KselComponent() {
             setTochkaNeed(0);
             return;
         }
+        else if (value === '10') {
+            setInputNeed('10');
+            setTochkaNeed(10);
+            return;
+        }
         const lastChar = value[value.length - 1];
         const charCode = lastChar.charCodeAt(0);
         const isDigit = charCode >= 48 && charCode <= 57;
