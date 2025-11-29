@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { ChangeEvent } from 'react';
 import "./kselComponent.css"
 
 function KselComponent() {
@@ -6,7 +7,69 @@ function KselComponent() {
     const [tochkaNeed, setTochkaNeed] = useState(0);
     const [attempts, setAttempts] = useState(0);
     const [activeTab, setActiveTab] = useState(0);
-    const [chance, setChance] = useState<string>(' пока ничего')
+    const [inputNeed, setInputNeed] = useState('0');
+    const [inputNow, setInputNow] = useState('0');
+    const [inputAttempts, setInputAttempts] = useState('0');
+    const [chance, setChance] = useState<string>(' пока ничего');
+
+    const changeInputNow = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+
+        if (value === '') {
+            setInputNow('0');
+            setTochkaNow(0);
+            return;
+        }
+        const lastChar = value[value.length - 1];
+        const charCode = lastChar.charCodeAt(0);
+        const isDigit = charCode >= 48 && charCode <= 57;
+
+        if (isDigit) {
+            setInputNow(lastChar);
+            setTochkaNow(parseInt(lastChar));
+        }
+    }
+    
+    const changeInputNeed = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+
+        if (value === '') {
+            setInputNeed('0');
+            setTochkaNeed(0);
+            return;
+        }
+        const lastChar = value[value.length - 1];
+        const charCode = lastChar.charCodeAt(0);
+        const isDigit = charCode >= 48 && charCode <= 57;
+
+        if (isDigit) {
+            setInputNeed(lastChar);
+            setTochkaNeed(parseInt(lastChar));
+        }
+    }
+
+    const changeInputAttempts = (e: ChangeEvent<HTMLInputElement>) => {
+        var value = e.target.value;
+
+        if (value === '') {
+            setInputAttempts('0');
+            setAttempts(0);
+            return;
+        }
+        const lastChar = value[value.length - 1];
+        const charCode = lastChar.charCodeAt(0);
+        const isDigit = charCode >= 48 && charCode <= 57;
+
+        if (isDigit) {
+            if (value[0] == '0'){
+                value = value.substring(1);
+            }
+            setInputAttempts(value);
+            setAttempts(parseInt(value));
+        } else {
+            setInputAttempts(inputAttempts);
+        }
+    }
 
     const calculationKsel = () => {
         if (tochkaNow >= tochkaNeed) {
@@ -99,49 +162,23 @@ function KselComponent() {
                     <div className="main-class-ksel">
                         <div className="ksel-item">
                             <p>Какая точка сейчас: </p>
-                            <input 
-                                type="number"
-                                min="0"
-                                max="9"
-                                step="1"
+                            <input
                                 className="quantity"
-                                onChange={(e) => setTochkaNow(parseInt(e.target.value))}
-                                onInput={(e) => {
-                                if (e.currentTarget.value.length > 1) {
-                                  e.currentTarget.value = e.currentTarget.value.slice(0, 1);
-                                }
-                                }}
+                                value={inputNow}
+                                onChange={changeInputNow}
                             />
                         </div>
                         <div className="ksel-item">
                             <p>Какая точка нужна: </p>
-                            <input 
-                                type="number"
-                                min="0"
-                                max="10"
-                                step="1"
+                            <input
                                 className="quantity"
-                                onChange={(e) => setTochkaNeed(parseInt(e.target.value))}
-                                onInput={(e) => {
-                                    let value = e.currentTarget.value;
-
-                                    // Ограничение длины
-                                    if (value.length > 2) {
-                                        e.currentTarget.value = value.slice(0, 2);
-                                        return;
-                                    }
-
-                                    // Ограничение диапазона 0-10
-                                    const numValue = parseInt(value);
-                                    if (numValue > 10) {
-                                        e.currentTarget.value = '10';
-                                    }
-                                }}
+                                value={inputNeed}
+                                onChange={changeInputNeed}
                             />
                         </div>
                         <div className="ksel-item">   
                             <p>Сколько кселов готов потратить: </p>
-                            <input maxLength={7} onChange={(e) => setAttempts(parseInt(e.target.value))}></input>
+                            <input value={inputAttempts} maxLength={7} onChange={changeInputAttempts}></input>
                         </div>
                         <button onClick={calculationKsel} className="calculate-btn">Рассчитать</button>
                         <div className="ksel-item">
@@ -159,49 +196,23 @@ function KselComponent() {
                     <div className="main-class-ksel">
                         <div className="ksel-item">
                             <p>Какая точка сейчас: </p>
-                            <input 
-                                type="number"
-                                min="0"
-                                max="9"
-                                step="1"
+                            <input
                                 className="quantity"
-                                onChange={(e) => setTochkaNow(parseInt(e.target.value))}
-                                onInput={(e) => {
-                                if (e.currentTarget.value.length > 1) {
-                                  e.currentTarget.value = e.currentTarget.value.slice(0, 1);
-                                }
-                                }}
+                                value={inputNow}
+                                onChange={changeInputNow}
                             />
                         </div>
                         <div className="ksel-item">
                             <p>Какая точка нужна: </p>
-                            <input 
-                                type="number"
-                                min="0"
-                                max="9"
-                                step="1"
+                            <input
                                 className="quantity"
-                                onChange={(e) => setTochkaNeed(parseInt(e.target.value))}
-                                onInput={(e) => {
-                                    let value = e.currentTarget.value;
-
-                                    // Ограничение длины
-                                    if (value.length > 2) {
-                                        e.currentTarget.value = value.slice(0, 2);
-                                        return;
-                                    }
-
-                                    // Ограничение диапазона 0-10
-                                    const numValue = parseInt(value);
-                                    if (numValue > 10) {
-                                        e.currentTarget.value = '10';
-                                    }
-                                }}
+                                value={inputNeed}
+                                onChange={changeInputNeed}
                             />
                         </div>
                         <div className="ksel-item">   
                             <p>Сколько безопасок готов потратить: </p>
-                            <input maxLength={7} onChange={(e) => setAttempts(parseInt(e.target.value))}></input>
+                            <input value={inputAttempts} maxLength={7} onChange={changeInputAttempts}></input>
                         </div>
                         <button onClick={calculationBez} className="calculate-btn">Рассчитать</button>
                         <div className="ksel-item">
