@@ -19,6 +19,8 @@ body {
   height: 100dvh;
   width: 100%;
   font-family: 'Exo 2', sans-serif;
+  min-height: 100dvh; /* Изменено на min-height */
+  min-height: 100vh;
 }
 
 h1 {
