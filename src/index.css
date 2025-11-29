@@ -48,6 +48,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Для мобильных устройств */
+@media (max-width: 768px) and (orientation: portrait) {
+  body {
+    background-size: auto 100%; /* Растянуть по высоте */
+    background-position: top center; /* Выровнять по верху */
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
