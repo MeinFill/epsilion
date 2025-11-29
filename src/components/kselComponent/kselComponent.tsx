@@ -7,16 +7,16 @@ function KselComponent() {
     const [tochkaNeed, setTochkaNeed] = useState(0);
     const [attempts, setAttempts] = useState(0);
     const [activeTab, setActiveTab] = useState(0);
-    const [inputNeed, setInputNeed] = useState('0');
-    const [inputNow, setInputNow] = useState('0');
-    const [inputAttempts, setInputAttempts] = useState('0');
+    const [inputNeed, setInputNeed] = useState('');
+    const [inputNow, setInputNow] = useState('');
+    const [inputAttempts, setInputAttempts] = useState('');
     const [chance, setChance] = useState<string>(' пока ничего');
 
     const changeInputNow = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
 
         if (value === '') {
-            setInputNow('0');
+            setInputNow('');
             setTochkaNow(0);
             return;
         }
@@ -34,7 +34,7 @@ function KselComponent() {
         const value = e.target.value;
 
         if (value === '') {
-            setInputNeed('0');
+            setInputNeed('');
             setTochkaNeed(0);
             return;
         }
@@ -52,7 +52,7 @@ function KselComponent() {
         var value = e.target.value;
 
         if (value === '') {
-            setInputAttempts('0');
+            setInputAttempts('');
             setAttempts(0);
             return;
         }
@@ -139,6 +139,9 @@ function KselComponent() {
                     setTochkaNow(0);
                     setTochkaNeed(0);
                     setAttempts(0);
+                    setInputNeed('');
+                    setInputNow('');
+                    setInputAttempts('');
                   }}
                 >
                     Рассчет кселами
@@ -151,6 +154,9 @@ function KselComponent() {
                     setTochkaNow(0);
                     setTochkaNeed(0);
                     setAttempts(0);
+                    setInputNeed('');
+                    setInputNow('');
+                    setInputAttempts('');
                   }}
                 >
                     Рассчет безопасками
