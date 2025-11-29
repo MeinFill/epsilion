@@ -20,7 +20,8 @@ body {
   width: 100%;
   font-family: 'Exo 2', sans-serif;
   min-width: 600px; /* Изменено на min-height */
-  min-height: 1200px;
+  min-width: 100dvh;
+  min-width: 100vh;
 }
 
 h1 {
